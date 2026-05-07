@@ -10,13 +10,13 @@ import json
 
 def loadmodel(logger):
     """Get the model"""
-    TRAINED_MODEL_FILEPATH = f"model/model_pkl"
+    TRAINED_MODEL_FILEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model", "model_pkl")
     logger.info(f"model path:{TRAINED_MODEL_FILEPATH}")
     logger.info("loading model")
     with open(TRAINED_MODEL_FILEPATH , 'rb') as f:
         clfdt = pickle.load(f)
-    logger.info("returning model object")    
-    return clfdt  
+    logger.info("returning model object")
+    return clfdt
 
 def preprocessing(df:np.ndarray,logger):
     """ Applies preprocessing techniques to the raw data"""
